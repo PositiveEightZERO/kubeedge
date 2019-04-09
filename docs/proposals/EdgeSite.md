@@ -50,6 +50,7 @@ K8s client library interface will be used. The edgecontroller on each edge node 
 The informer programming model will be used between EdgeController and APIServer. 
 For example:
 
+```go
 informer := factory.Core().V1().Pods().Informer()
 stopper := make(chan struct{})
 defer close(stopper)
@@ -62,6 +63,7 @@ informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
         log.Printf("New Pod Added to Store: %s", mObj.GetName())
     },
 })
+```
 
 And the data can be written to the client side store. 
 
